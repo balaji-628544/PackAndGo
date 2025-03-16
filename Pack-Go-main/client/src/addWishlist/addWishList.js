@@ -1,12 +1,14 @@
 import axios from 'axios';
+import { toast, ToastContainer } from "react-toastify";
+const API_BASE_URL = 'http://localhost:5000/api/wishlist';
 
-const API_BASE_URL = 'http://localhost:5000/api/whishlist/add';
 
-
-export const uploadData = async (newItem, token,setUserData) => {
+export const uploadData = async (newItem, token, setUserData) => {
   try {
+    console.log(newItem);
+
     const response = await axios.post(
-      `${API_BASE_URL}/wishList`,
+      `${API_BASE_URL}/add`,
       newItem,
       {
         headers: {
@@ -17,19 +19,27 @@ export const uploadData = async (newItem, token,setUserData) => {
 
     console.log('Data uploaded:', response.data);
 
-    
-
     setUserData(prevData => ({
       ...prevData,
-      wishlist: response.data.wishlist || [] 
+      wishlist: response.data.wishlist || []
     }));
 
+    toast.success("Item added to wishlist!");
+    
     return response.data;
   } catch (error) {
     console.error('Error uploading data:', error);
+
+    // ✅ Display backend error message or fallback to default
+    toast.error(error.response?.data?.message || "Failed to add item to wishlist");
+    
     throw error;
   }
- };
+};
+
+
+
+
 
 // export const AddwishListData = (newItem,setUserData)=>{
   

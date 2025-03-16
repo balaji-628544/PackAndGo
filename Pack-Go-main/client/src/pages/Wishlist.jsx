@@ -67,14 +67,14 @@ const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
   const navigate = useNavigate();
   const { userData } = useContext(AppContext);
-
+  const token = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
     const fetchWishlist = async () => {
-      if (userData) {
+      if (userData && token) {
         try {
-          const token = userData.user.token;
+          
           const response = await axios.get(
-            `http://localhost:5000/api/wishlist`, // Pass userId dynamically
+            `http://localhost:5000/api/wishlist/${userData.user._id}`, // Pass userId dynamically
             {
               headers: {
                 authorization: token ? `Bearer ${token}` : "",
@@ -82,7 +82,9 @@ const WishlistPage = () => {
             }
           );
           console.log(userData);
-          setWishlist(response.data); // Store wishlist in state
+          setWishlist(response.data); 
+          console.log(response);
+          console.log(wishlist);
         } catch (error) {
           console.error(error);
           toast.error("Error fetching wishlist");
@@ -127,9 +129,9 @@ const WishlistPage = () => {
   return (
     <div style={{ margin: "80px" }}>
       <h1>Your Wishlist</h1>
-      {userData.wishlist.length > 0 ? (
+      {wishlist?.length > 0 ? (
         <ul>
-          {userData.wishlist.map((item, index) => (
+          {wishlist.map((item, index) => (
             <li key={index} style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px" }}>
               <img src={item.image} alt={item.place} style={{ width: "150px", height: "100px", objectFit: "cover" }} />
               <p><strong>Image:</strong> {item.image}</p>

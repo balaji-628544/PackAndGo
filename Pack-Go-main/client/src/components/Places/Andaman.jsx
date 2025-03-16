@@ -15,8 +15,9 @@ const AndamanNicobar = () => {
   const images = [andamanImg1, andamanImg2, andamanImg3, andamanImg4];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate();
-  const {userData,setUserData} = useContext(AppContext);
+  const {userData,setUserData,token} = useContext(AppContext);
   // const [image,setImage] = useEffect(""); 
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,10 +37,14 @@ const AndamanNicobar = () => {
         price: "10000",
 
       }
-      AddwishListData(newItem,setUserData); 
+      const res = AddwishListData(newItem,setUserData); 
+       console.log("UserData"+userData);
+       console.log("res"+res);
+        if(res === userData){
+        uploadData(newItem,token,setUserData);
     };
     
-    
+  }
   return (
     <div className="place-container">
       <h1 className="place-title">Andaman and Nicobar Islands Tourism</h1>

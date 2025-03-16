@@ -53,9 +53,9 @@ userRouter.post("/login",async(req,res)=>{
 });
 
 
-userRouter.get("/wishlist",protect,(req,res)=>{
-    return res.status(200).json({message:"Welcome to wishlist"});
-})
+// userRouter.get("/wishlist",protect,(req,res)=>{
+//     return res.status(200).json({message:"Welcome to wishlist"});
+// })
 
 
 const generateToken = (id)=>{
