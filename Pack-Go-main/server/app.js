@@ -1,0 +1,25 @@
+const mongoose = require("mongoose");
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const userRouter = require("./routes/UserRouter");
+dotenv.config();
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect(process.env.MONGO_URL).then(()=> console.log("Connected to DB")).catch((err)=> console.log("MongoDB connection Failed",err));
+
+app.get("/",(req,res)=>{
+    res.json({
+        project:"MERN Chat",
+        message:"welcome to chat application",
+        developedBy:"Balu",
+        website:"WWW.balu.com",
+    });
+});
+
+app.use("/api",userRouter);
+app.use("/api/wishList",userRouter);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, console.log("Server started",PORT));
