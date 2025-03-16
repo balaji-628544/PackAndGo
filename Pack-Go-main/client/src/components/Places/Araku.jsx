@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Places.css"; // Reusable CSS for all places
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import 'boxicons/css/boxicons.min.css';
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
+import { AppContext } from "../Context/AppContext";
 
 // Import Images
 import arakuImg1 from "../../assets/PlaceImages/Araku1.jpeg";
@@ -9,39 +11,38 @@ import arakuImg2 from "../../assets/PlaceImages/Araku2.jpg";
 import arakuImg3 from "../../assets/PlaceImages/Araku3.avif";
 import arakuImg4 from "../../assets/PlaceImages/Araku4.jpg";
 import arakuImg5 from "../../assets/PlaceImages/Araku5.avif";
-import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
-import { AppContext } from "../Context/AppContext";
+
 
 
 const ArakuValley = () => {
   const images = [arakuImg1, arakuImg2, arakuImg3, arakuImg4, arakuImg5];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate(); // Initialize navigation
-  const {userData,setUserData,token} = useContext(AppContext);
+  const { userData, setUserData, token } = useContext(AppContext);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
-  useEffect(()=>{
-        if(userData){
-          console.log(userData);
-        }
-      },[userData]);
-      const addData = () => {
-        const newItem = {
-          place: "araku",
-          money: "2500",
-          image:"String",
-        }
-       const res = AddwishListData(newItem,setUserData); 
-       console.log("UserData"+userData);
-       console.log("res"+res);
-        if(res === userData){
-          uploadData(newItem,token,setUserData);
-        }
-      };
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
+  const addData = () => {
+    const newItem = {
+      place: "araku",
+      money: "₹2,500",
+      image: "String",
+    }
+    const res = AddwishListData(newItem, setUserData);
+    console.log("UserData" + userData);
+    console.log("res" + res);
+    if (res === userData) {
+      uploadData(newItem, token, setUserData);
+    }
+  };
   return (
     <div className="place-container">
       <h1 className="place-title">Araku Valley Tourism</h1>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaUser, FaHeart } from "react-icons/fa";
 import "./Navbar.css"; // Import the CSS file
 import Image from '../assets/logo.jpeg';
+
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
@@ -26,7 +26,7 @@ const Navbar = () => {
         {/* Navbar Links */}
         <ul className="navbar-list">
           <li className="navbar-item">
-            <Link to="/" className="navbar-link">Home</Link>
+            <Link to="/" className="navbar-link"><i className="fa-solid fa-home"></i> Home</Link>
           </li>
 
           {/* Top Destinations Dropdown */}
@@ -69,15 +69,16 @@ const Navbar = () => {
           </li>
 
           <li className="navbar-item">
-            <Link to="/contact" className="navbar-link">Contact</Link>
+            <Link to="/contact" className="navbar-link"><i className="fa-solid fa-phone"></i> Contact</Link>
           </li>
 
           <li className="navbar-item">
-            <Link to="/wishlist" className="navbar-link"><FaHeart /> Wishlist</Link>
+            <Link to="/wishlist" className="navbar-link"><i className="fa-solid fa-heart"></i> Wishlist</Link>
           </li>
 
           <li className="navbar-item">
-            <Link to="/profile" className="navbar-link"><FaUser /> Profile</Link>
+            
+            <Link to="/profile" className="navbar-link"><i className="fa-solid fa-user"></i> Profile</Link>
           </li>
         </ul>
       </div>
