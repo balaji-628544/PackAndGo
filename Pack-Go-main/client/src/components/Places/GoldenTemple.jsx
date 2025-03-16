@@ -31,8 +31,8 @@ const GoldenTemple = () => {
     }, [userData]);
     const addData = () => {
       const newItem = {
-        place: "araku",
-        money: "₹2,500",
+        place: "Golden Temple",
+        money: "₹5,500",
         image: "String",
       }
       const res = AddwishListData(newItem, setUserData);
