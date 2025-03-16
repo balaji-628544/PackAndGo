@@ -32,13 +32,21 @@ router.post("/add", protect, async (req, res) => {
     }
 });
 
+router.get("/:place",protect,async (req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+})
+
 // Get user's wishlist
 router.get("/:userId", protect, async (req, res) => {
     try {
         const { userId } = req.params;
         console.log(userId);
         const userWishlist = await WishList.findOne({ userId });
-        
+
         if (!userWishlist) {
             return res.status(404).json({ message: "Wishlist not found" });
         }
