@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./SpiritualDestinations.css";
 
 // ✅ Importing images
-import TirupatiImage from "../assets/PlaceImages/Tirupati.jpeg";
-import PuriImage from "../assets/PlaceImages/Puri.jpg";
+import TirupatiImage from "../assets/PlaceImages/Tirupati1.jpeg";
+import PuriImage from "../assets/PlaceImages/Puri1.jpg";
 import RameshwaramImage from "../assets/PlaceImages/Rameshwaram1.webp";
-import DwarakaImage from "../assets/PlaceImages/Dwaraka.jpeg";
-import GoldenTempleImage from "../assets/PlaceImages/GoldenTemple.jpeg";
+import DwarakaImage from "../assets/PlaceImages/Dwaraka1.jpeg";
+import GoldenTempleImage from "../assets/PlaceImages/GoldenTemple1.jpg";
 import BadrinathImage from "../assets/PlaceImages/Badrinath1.jpg";
 
 // ✅ Array of Spiritual Destinations

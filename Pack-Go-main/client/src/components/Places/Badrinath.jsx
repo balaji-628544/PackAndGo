@@ -26,10 +26,16 @@ const Badrinath = () => {
        const newItem = {
          place:"Badrinath",
          image: "String",
-         price: "8000",
+         money: "₹8,000",
  
        }
-       AddwishListData(newItem,setUserData); 
+       AddwishListData(newItem,setUserData);
+       const res = AddwishListData(newItem,setUserData); 
+              console.log("UserData"+userData);
+              console.log("res"+res);
+               if(res === userData){
+                 uploadData(newItem,token,setUserData);
+               } 
      };
   return (
     <div className="place-container">
