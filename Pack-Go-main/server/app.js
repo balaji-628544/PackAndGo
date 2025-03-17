@@ -22,5 +22,5 @@ app.get("/",(req,res)=>{
 
 app.use("/api",userRouter);
 app.use("/api/wishlist",router);
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6500;
 app.listen(PORT, console.log("Server started",PORT));

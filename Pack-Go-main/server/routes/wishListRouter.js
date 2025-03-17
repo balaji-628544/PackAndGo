@@ -9,7 +9,7 @@ router.post("/add", protect, async (req, res) => {
        
         console.log(req.body);
         const userId = req.user._id;
-        const {place,image,money} = req.body;
+        const {place,image,price} = req.body;
         let userWishlist = await WishList.findOne({ userId });
 
         if (!userWishlist) {
@@ -22,7 +22,7 @@ router.post("/add", protect, async (req, res) => {
             return res.status(400).json({ message: "Tour already exists in wishlist" });
         }
         console.log(userId);
-        userWishlist.Tours.push({ place, image, money });
+        userWishlist.Tours.push({ place, image, price });
 
         await userWishlist.save();
         res.status(201).json({ message: "Tour added to wishlist", wishlist: userWishlist });
@@ -31,6 +31,14 @@ router.post("/add", protect, async (req, res) => {
         res.status(500).json({ message: "Server Error", error });
     }
 });
+
+// router.get("/:place",protect,async (req,res)=>{
+//     try {
+        
+//     } catch (error) {
+        
+//     }
+// })
 
 // Get user's wishlist
 router.get("/:userId", protect, async (req, res) => {

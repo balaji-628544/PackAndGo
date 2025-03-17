@@ -11,7 +11,7 @@ const WishListSchema = new mongoose.Schema({
         {
             place:String,
             image:String,
-            money:String,
+            price:String,
         }
     ]
 

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Places.css"; // Reusable CSS for all places
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import 'boxicons/css/boxicons.min.css';
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
+import { AppContext } from "../Context/AppContext";
 
 // Import Images
 import ladakhImg1 from "../../assets/PlaceImages/Ladak1.jpeg";
@@ -13,12 +15,31 @@ const Ladakh = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate(); // Initialize navigation
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
-    return () => clearInterval(interval);
-  }, []);
+  const { userData, setUserData, token } = useContext(AppContext);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentImage((prev) => (prev + 1) % images.length);
+      }, 3000); // Change image every 3 seconds
+      return () => clearInterval(interval);
+    }, []);
+    useEffect(() => {
+      if (userData) {
+        console.log(userData);
+      }
+    }, [userData]);
+    const addData = () => {
+      const newItem = {
+        place: "Ladak",
+        price: "₹25,000",
+        image: "String",
+      }
+      const res = AddwishListData(newItem, setUserData);
+      console.log("UserData" + userData);
+      console.log("res" + res);
+      if (res === userData) {
+        uploadData(newItem, token, setUserData);
+      }
+    };
 
   return (
     <div className="place-container">
@@ -39,7 +60,7 @@ const Ladakh = () => {
             </button>
 
             {/* Navigate to Wishlist Page */}
-            <button className="wishlist" onClick={() => navigate("/wishlist")}>
+            <button className="wishlist" onClick={() => addData()}>
               <i className='bx bx-heart'></i> Wishlist
             </button>
           </div>

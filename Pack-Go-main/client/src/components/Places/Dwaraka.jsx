@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./Places.css";
-import { useNavigate } from "react-router-dom";
+import "./Places.css"; // Reusable CSS for all places
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import 'boxicons/css/boxicons.min.css';
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
 import { AppContext } from "../Context/AppContext";
-import { AddwishListData } from "../../addWishlist/addWishList";
 
 // Import Images
 import dwarkaImg1 from "../../assets/PlaceImages/Dwaraka1.jpeg";
@@ -14,16 +14,13 @@ const Dwarka = () => {
   const images = [dwarkaImg1, dwarkaImg2, dwarkaImg3];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate();
-  const { userData, setUserData } = useContext(AppContext);
-
-
+  const { userData, setUserData, token } = useContext(AppContext);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
-
   useEffect(() => {
     if (userData) {
       console.log(userData);
@@ -32,11 +29,9 @@ const Dwarka = () => {
   const addData = () => {
     const newItem = {
       place: "Dwaraka",
-      image: "String",
       price: "₹8,500",
-
+      image: "String",
     }
-    AddwishListData(newItem, setUserData);
     const res = AddwishListData(newItem, setUserData);
     console.log("UserData" + userData);
     console.log("res" + res);

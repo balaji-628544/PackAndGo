@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Places.css"; // Reusable CSS for all places
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import 'boxicons/css/boxicons.min.css';
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
 import { AppContext } from "../Context/AppContext";
-import { AddwishListData } from "../../addWishlist/addWishList";
 
 // Import Images
 import goaImg1 from "../../assets/PlaceImages/Goa1.jpg";
@@ -14,16 +14,14 @@ const Goa = () => {
   const images = [goaImg1, goaImg2, goaImg3];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate(); // Initialize navigation
-  const { userData, setUserData } = useContext(AppContext);// copy
-
-
+  const { userData, setUserData, token } = useContext(AppContext);// copy
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
-  useEffect(() => {  // copy
+  useEffect(() => {
     if (userData) {
       console.log(userData);
     }
@@ -31,18 +29,16 @@ const Goa = () => {
   const addData = () => {
     const newItem = {
       place: "Goa",
-      image: "String",
       price: "₹5,154",
-
+      image: "String",
     }
-    AddwishListData(newItem, setUserData);
     const res = AddwishListData(newItem, setUserData);
     console.log("UserData" + userData);
     console.log("res" + res);
     if (res === userData) {
       uploadData(newItem, token, setUserData);
     }
-  };  
+  };
 
   return (
     <div className="place-container">

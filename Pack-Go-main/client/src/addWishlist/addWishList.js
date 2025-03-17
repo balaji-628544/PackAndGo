@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast, ToastContainer } from "react-toastify";
-const API_BASE_URL = 'http://localhost:5000/api/wishlist';
+const API_BASE_URL = 'http://localhost:6500/api/wishlist';
 
 
 export const uploadData = async (newItem, token, setUserData) => {
@@ -38,30 +38,6 @@ export const uploadData = async (newItem, token, setUserData) => {
 };
 
 
-
-
-
-// export const AddwishListData = (newItem,setUserData)=>{
-  
-//   setUserData((prev) => {
-//     const wishlist = Array.isArray(prev.wishlist) ? prev.wishlist : [];
-
-//     // Check if the item already exists in the wishlist
-//     const isAlreadyInWishlist = wishlist.some(
-//       (item) => item.image === newItem.image && item.price === newItem.price
-//     );  
-
-//     if (isAlreadyInWishlist) {
-//       console.log("Item already exists in wishlist");
-//       return prev; // Return previous state if already present
-//     }
-
-//     return {
-//       ...prev,
-//       wishlist: [...wishlist, newItem], // Add only if not present
-//     };
-//   });
-// }
 
 export const AddwishListData = (newItem, setUserData) => {
   let updatedState;

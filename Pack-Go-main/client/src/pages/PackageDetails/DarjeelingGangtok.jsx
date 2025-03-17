@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Styles.css";
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
+import { AppContext } from "../../components/Context/AppContext";
+
 import image1 from "./PackageImages/image1.jpg";
 import image2 from "./PackageImages/image2.jpg";
 import image3 from "./PackageImages/image3.jpg";
@@ -13,13 +16,33 @@ const DarjeelingGangtok = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeDay, setActiveDay] = useState(null);
   const navigate = useNavigate();
+  const { userData, setUserData, token } = useContext(AppContext);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextImage();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % images.length);
+      }, 3000); // Change image every 3 seconds
+      return () => clearInterval(interval);
+    }, []);
+    useEffect(() => {
+      if (userData) {
+        console.log(userData);
+      }
+    }, [userData]);
+    const addData = () => {
+      const newItem = {
+        place: "Darjeeling Gangtok Pack",
+        price: "₹9,999",
+        image: "String",
+      }
+      const res = AddwishListData(newItem, setUserData);
+      console.log("UserData" + userData);
+      console.log("res" + res);
+      if (res === userData) {
+        uploadData(newItem, token, setUserData);
+      }
+    };
+  
 
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -54,9 +77,10 @@ const DarjeelingGangtok = () => {
         </div>
 
         <div className="booking-section">
-          <h3 className="price">Price: $1199 per person</h3>
+          <h3 className="price">Price: ₹9,999 per person</h3>
           <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
-          <button className="wishlist" onClick={() => navigate("/wishlist")}>♡ Add to Wishlist</button>
+          <button className="wishlist" onClick={() => addData()}>
+            ♡ Add to Wishlist</button>
         </div>
       </div>
 
