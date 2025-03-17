@@ -31,7 +31,7 @@ const AuthForm = () => {
         const token = localStorage.getItem("token"); // Or wherever the token is stored
 
         const response = await axios.post(
-            "http://localhost:5000/api/register",
+            "http://localhost:6500/api/register",
             {
                 userName: name,
                 email,
@@ -57,7 +57,7 @@ const AuthForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post("http://localhost:6500/api/login", {
         email,
         password,
       });

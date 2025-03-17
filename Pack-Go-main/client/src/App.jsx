@@ -97,7 +97,7 @@ const App = () => {
         <Route path="/packagedetails/himachal" element={<Himachal />} />
         <Route path="/packagedetails/karnataka" element={<Karnataka />} />
         <Route path="/packagedetails/kerala" element={<Kerala />} />
-        <Route path="/packagedetails/ladaktrip" element={<LadakhTrip />} />
+        <Route path="/packagedetails/ladak" element={<LadakhTrip />} />
         <Route path="/packagedetails/orrisa" element={<Orissa />} />
         <Route path="/packagedetails/golden-triangle-varanasi" element={<GoldenTriangleVaranasi />} />
         <Route path="/packagedetails/rajasthan" element={<Rajasthan />} />

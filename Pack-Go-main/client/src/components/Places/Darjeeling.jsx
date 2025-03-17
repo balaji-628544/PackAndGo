@@ -3,7 +3,7 @@ import "./Places.css"; // Reusable CSS for all places
 import { useNavigate } from "react-router-dom";
 import 'boxicons/css/boxicons.min.css';
 import { AppContext } from "../Context/AppContext";
-import { AddwishListData } from "../../addWishlist/addWishList";
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
 
 // Import Images
 import darjeelingImg1 from "../../assets/PlaceImages/Darjeeling1.jpg";
@@ -16,17 +16,15 @@ const Darjeeling = () => {
   const images = [darjeelingImg1, darjeelingImg2, darjeelingImg3, darjeelingImg4];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate();
-  const { userData, setUserData } = useContext(AppContext);// copy
+  const { userData, setUserData, token } = useContext(AppContext);
 
-
-  useEffect(() => {
+useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {  // copy
+  useEffect(() => {
     if (userData) {
       console.log(userData);
     }
@@ -34,18 +32,16 @@ const Darjeeling = () => {
   const addData = () => {
     const newItem = {
       place: "Darjeeling",
+      price: "₹6,500",
       image: "String",
-      price: "₹6,550",
-
     }
-    AddwishListData(newItem, setUserData);
-    const res = AddwishListData(newItem,setUserData); 
-           console.log("UserData"+userData);
-           console.log("res"+res);
-            if(res === userData){
-              uploadData(newItem,token,setUserData);
-            }
-  }; // copy
+    const res = AddwishListData(newItem, setUserData);
+    console.log("UserData" + userData);
+    console.log("res" + res);
+    if (res === userData) {
+      uploadData(newItem, token, setUserData);
+    }
+  };
   return (
     <div className="place-container">
       <h1 className="place-title">Darjeeling Tourism</h1>

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "./Places.css";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import "./Places.css"; // Reusable CSS for all places
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import 'boxicons/css/boxicons.min.css';
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
+import { AppContext } from "../Context/AppContext";
 
 // Import Images
 import lakshadweepImg1 from "../../assets/PlaceImages/Lakshadweep1.webp";
@@ -11,14 +13,34 @@ import lakshadweepImg3 from "../../assets/PlaceImages/Lakshadweep3.jpeg";
 const Lakshadweep = () => {
   const images = [lakshadweepImg1, lakshadweepImg2, lakshadweepImg3];
   const [currentImage, setCurrentImage] = useState(0);
+  const [wishlistItem, setWishlistItem] = useState(null);
   const navigate = useNavigate();
+  const { userData, setUserData, token } = useContext(AppContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (wishlistItem) {
+      const res = AddwishListData(wishlistItem, setUserData);
+      if (res === userData) {
+        uploadData(wishlistItem, token, setUserData);
+      }
+      setWishlistItem(null);
+    }
+  }, [wishlistItem, userData, token, setUserData]);
+
+  const addData = () => {
+    setWishlistItem({
+      place: "Lakshadweep",
+      price: "₹18,000",
+      image: "String",
+    });
+  };
 
   return (
     <div className="place-container">
@@ -34,7 +56,7 @@ const Lakshadweep = () => {
           <p className="trip-price">Trip Price: ₹18,000 per person</p>
           <div className="booking-buttons">
             <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
-            <button className="wishlist" onClick={() => navigate("/wishlist")}>
+            <button className="wishlist" onClick={addData}>
               <i className='bx bx-heart'></i> Wishlist
             </button>
           </div>

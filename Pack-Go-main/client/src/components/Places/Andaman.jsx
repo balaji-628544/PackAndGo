@@ -2,14 +2,15 @@ import React, { useState, useEffect, useCallback, useContext } from "react";
 import "./Places.css"; // Reusable CSS for all places
 import { useNavigate } from "react-router-dom";
 import 'boxicons/css/boxicons.min.css';
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
+import { AppContext } from "../Context/AppContext";
 
 // Import Images
 import andamanImg1 from "../../assets/PlaceImages/Andaman1.jpg";
 import andamanImg2 from "../../assets/PlaceImages/Andaman2.jpg";
 import andamanImg3 from "../../assets/PlaceImages/Andaman3.jpg";
 import andamanImg4 from "../../assets/PlaceImages/Andaman4.jpg";
-import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
-import { AppContext } from "../Context/AppContext";
+
 
 const AndamanNicobar = () => {
   const images = [andamanImg1, andamanImg2, andamanImg3, andamanImg4];
@@ -34,7 +35,7 @@ const AndamanNicobar = () => {
       const newItem = {
         place:"Andaman",
         image: "String",
-        price: "10000",
+        price: "₹10,000 ",
 
       }
       const res = AddwishListData(newItem,setUserData); 

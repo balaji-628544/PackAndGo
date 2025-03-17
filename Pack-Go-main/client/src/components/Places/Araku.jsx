@@ -32,8 +32,8 @@ const ArakuValley = () => {
   }, [userData]);
   const addData = () => {
     const newItem = {
-      place: "araku",
-      money: "₹2,500",
+      place: "Araku",
+      price: "₹2,500",
       image: "String",
     }
     const res = AddwishListData(newItem, setUserData);

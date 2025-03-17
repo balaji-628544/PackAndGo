@@ -9,7 +9,7 @@ router.post("/add", protect, async (req, res) => {
        
         console.log(req.body);
         const userId = req.user._id;
-        const {place,image,money} = req.body;
+        const {place,image,price} = req.body;
         let userWishlist = await WishList.findOne({ userId });
 
         if (!userWishlist) {
@@ -22,7 +22,7 @@ router.post("/add", protect, async (req, res) => {
             return res.status(400).json({ message: "Tour already exists in wishlist" });
         }
         console.log(userId);
-        userWishlist.Tours.push({ place, image, money });
+        userWishlist.Tours.push({ place, image, price });
 
         await userWishlist.save();
         res.status(201).json({ message: "Tour added to wishlist", wishlist: userWishlist });
@@ -32,13 +32,13 @@ router.post("/add", protect, async (req, res) => {
     }
 });
 
-router.get("/:place",protect,async (req,res)=>{
-    try {
+// router.get("/:place",protect,async (req,res)=>{
+//     try {
         
-    } catch (error) {
+//     } catch (error) {
         
-    }
-})
+//     }
+// })
 
 // Get user's wishlist
 router.get("/:userId", protect, async (req, res) => {
@@ -46,7 +46,7 @@ router.get("/:userId", protect, async (req, res) => {
         const { userId } = req.params;
         console.log(userId);
         const userWishlist = await WishList.findOne({ userId });
-
+        
         if (!userWishlist) {
             return res.status(404).json({ message: "Wishlist not found" });
         }

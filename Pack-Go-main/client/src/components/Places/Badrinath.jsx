@@ -2,45 +2,47 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Places.css";
 import { useNavigate } from "react-router-dom";
 import 'boxicons/css/boxicons.min.css';
+import { AppContext } from "../Context/AppContext";
+import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
 
 // Import Images
 import badrinathImg1 from "../../assets/PlaceImages/Badrinath1.jpg";
 import badrinathImg2 from "../../assets/PlaceImages/Badrinath2.jpg";
 import badrinathImg3 from "../../assets/PlaceImages/Badrinath3.jpg";
-import { AppContext } from "../Context/AppContext";
-import { AddwishListData, uploadData } from "../../addWishlist/addWishList";
 
 const Badrinath = () => {
   const images = [badrinathImg1, badrinathImg2, badrinathImg3];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate();
-  const {userData,setUserData} = useContext(AppContext);
+  const { userData, setUserData, token } = useContext(AppContext);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 2000);
+    }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
-
- const addData = () => {
-       const newItem = {
-         place:"Badrinath",
-         image: "String",
-         money: "₹8,000",
- 
-       }
-       AddwishListData(newItem,setUserData);
-       const res = AddwishListData(newItem,setUserData); 
-              console.log("UserData"+userData);
-              console.log("res"+res);
-               if(res === userData){
-                 uploadData(newItem,token,setUserData);
-               } 
-     };
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
+  const addData = () => {
+    const newItem = {
+      place: "Badrinath",
+      price: "₹8,000",
+      image: "String",
+    }
+    const res = AddwishListData(newItem, setUserData);
+    console.log("UserData" + userData);
+    console.log("res" + res);
+    if (res === userData) {
+      uploadData(newItem, token, setUserData);
+    }
+  };
   return (
     <div className="place-container">
       <h1 className="place-title">Badrinath Tourism</h1>
-      
+
       <div className="place-content">
         <div className="place-images">
           <img src={images[currentImage]} alt="Badrinath" className="place-image" />
@@ -56,7 +58,7 @@ const Badrinath = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="place-details animate-section">
         <h2>About Badrinath</h2>
         <p>✅ <strong>Badrinath Temple</strong> – Dedicated to Lord Vishnu, one of the Char Dham sites.</p>
@@ -65,9 +67,9 @@ const Badrinath = () => {
         <p>✅ <strong>Mana Village</strong> – Last village before the Indo-Tibetan border.</p>
         <p>✅ <strong>Alaknanda River</strong> – Sacred river flowing beside the temple.</p>
       </div>
-      
-      
-      
+
+
+
       <div className="places-offered animate-section">
         <h2>Places Offered</h2>
         <ul>
@@ -78,7 +80,7 @@ const Badrinath = () => {
           <li>Alaknanda River</li>
         </ul>
       </div>
-      
+
       <div className="day-trip animate-section">
         <h2>Day Trip Plan</h2>
         <ul>
