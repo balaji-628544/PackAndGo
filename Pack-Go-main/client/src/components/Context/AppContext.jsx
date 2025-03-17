@@ -15,7 +15,7 @@ const AppContextProvider = (props) => {
         const stoken = localStorage.getItem("token");
         return stoken ? JSON.parse(stoken) : null;
     });
- 
+    const [paymentDetails,setPaymentDetails] = useState("");
     useEffect(() => {
         if (userData) {
             // ✅ Save userData to localStorage when it changes
@@ -30,6 +30,7 @@ const AppContextProvider = (props) => {
         setUserData, // ✅ Fix the naming issue
         token,
         setToken,
+        paymentDetails,setPaymentDetails
     }
 
     return (
