@@ -21,13 +21,13 @@ const Contact = () => {
 
   return (
     <div className="contact-container">
-      <h2>Contact Us</h2>
-      <p>We'd love to hear from you! Fill in the form below.</p>
+      <div className="contact-card">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Fill in the form below.</p>
 
-      {successMessage && <div className="success-message">{successMessage}</div>}
+        {successMessage && <div className="success-message">{successMessage}</div>}
 
-      <div className="contact-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="contact-form">
           <label>Name:</label>
           <input type="text" name="name" value={formData.name} onChange={handleChange} required />
 
@@ -43,7 +43,7 @@ const Contact = () => {
 
       <div className="contact-info">
         <h3>Contact Information</h3>
-        <p><strong>📍 Address:</strong> 123 Travel Street, New Delhi, India</p>
+        <p><strong>📍 Address:</strong> MVGR College Of Engineering, Chinthalavalsa, Vizianagaram, AP, India</p>
         <p><strong>📞 Phone:</strong> +91 98765 43210</p>
         <p><strong>📧 Email:</strong> support@packandgo.com</p>
       </div>
@@ -52,5 +52,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-

@@ -2,7 +2,7 @@
     text-align: center;
     padding: 40px 20px;
     background: #B9E5E8; /* Light blue ocean feel */
-    margin: 80px auto; /* Centers the container */
+    padding-top: 80px;
     padding-bottom: 60px;
   }
   

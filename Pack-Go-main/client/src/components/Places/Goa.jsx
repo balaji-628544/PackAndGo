@@ -54,7 +54,7 @@ const Goa = () => {
           <h2>Explore Goa</h2>
           <p className="trip-price">Trip Price: ₹5,154 per person</p>
           <div className="booking-buttons">
-            <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
+            {/* <button className="book-now" onClick={() => navigate("/payment?destination=Goa")}>Book Now</button> */}
             <button className="wishlist" onClick={() => addData()}>
               <i className='bx bx-heart'></i> Wishlist
             </button>

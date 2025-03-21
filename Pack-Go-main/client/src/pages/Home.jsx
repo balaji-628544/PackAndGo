@@ -102,15 +102,15 @@ const Home = () => {
               <h3>Contact Us</h3>
               <p>Email: support@packandgo.com</p>
               <p>Phone: +91 98765 43210</p>
-              <p>Address: 123 Travel Street, India</p>
+              <p>Address: MVGR College Of Engineering, Chinthalavalsa, Vizianagaram, AP, India</p>
             </div>
 
             <div className="footer-section">
               <h3>Follow Us</h3>
               <div className="social-icons">
-                <a href="https://www.instagram.com/" className="icon"><i className="bx bxl-instagram" style={{ color: "#ffffff", fontSize: "24px" }}></i></a>
-                <a href="https://wwww.facebook.com/" className="icon"><i className="bx bxl-facebook" style={{ color: "#ffffff", fontSize: "24px" }}></i></a>
-                <a href="https://www.x.com/" className="icon"><i className="bx bxl-twitter" style={{ color: "#ffffff", fontSize: "24px" }}></i></a>
+                <a href="https://www.instagram.com/sath_yyaa" className="icon"><i className="bx bxl-instagram" style={{ color: "#ffffff", fontSize: "24px" }}></i></a>
+                <a href="https://wwww.facebook.com/kolli.satyamahesh" className="icon"><i className="bx bxl-facebook" style={{ color: "#ffffff", fontSize: "24px" }}></i></a>
+                <a href="https://www.x.com/sath_yyaa" className="icon"><i className="bx bxl-twitter" style={{ color: "#ffffff", fontSize: "24px" }}></i></a>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const WishList = require("../models/WishList");
 const {protect} = require("../middleware/authenticateUser"); // Middleware to check if user is authenticated
-
+const BookingModel = require("../models/BookingModel")
 // Add a package to the wishlist
 router.post("/add", protect, async (req, res) => {
     try {
@@ -32,13 +32,32 @@ router.post("/add", protect, async (req, res) => {
     }
 });
 
-// router.get("/:place",protect,async (req,res)=>{
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// })
+router.post("/bookings", async (req, res) => {
+    try {
+      const { userId, package, travelers, contactDetails, travelDate } = req.body;
+      
+      console.log("Received userId:", userId);
+      console.log("Full request body:", req.body);
+  
+      if (!userId || !package || !travelers.length || !contactDetails.phone || !contactDetails.email || !travelDate) {
+        return res.status(400).json({ error: "Missing required fields" });
+      }
+  
+      const newBooking = new BookingModel({
+        userId,
+        package,
+        travelers,
+        contactDetails,
+        travelDate,
+      });
+  
+      await newBooking.save();
+      res.status(201).json({ message: "Booking successful" });
+    } catch (error) {
+      console.error("Booking error:", error); // Log the full error
+      res.status(500).json({ error: error.message }); // Return the exact error
+    }
+  });
 
 // Get user's wishlist
 router.get("/:userId", protect, async (req, res) => {
@@ -77,5 +96,7 @@ router.delete("/remove/:userId/:place", protect, async (req, res) => {
         res.status(500).json({ message: "Server Error", error });
     }
 });
+
+
 
 module.exports = router;

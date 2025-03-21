@@ -53,7 +53,7 @@ const Dwarka = () => {
           <h2>Explore Dwarka</h2>
           <p className="trip-price">Trip Price: ₹8,500 per person</p>
           <div className="booking-buttons">
-            <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
+            {/* <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button> */}
             <button className="wishlist" onClick={() => addData()}>
               <i className='bx bx-heart'></i> Wishlist
             </button>

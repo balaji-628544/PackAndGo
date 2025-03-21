@@ -1,100 +1,88 @@
-/* Contact Page Styling */
+/* Contact.css */
 .contact-container {
-    max-width: 650px;
-    margin: 60px auto;
-    padding: 40px;
-    background: rgba(255, 250, 245, 0.9); /* Soft peach with transparency */
-    backdrop-filter: blur(10px); /* Background blur effect */
-    color: #333;
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Background Image */
-body {
-    background: url('https://source.unsplash.com/1600x900/?scenery,nature') no-repeat center center fixed;
-    background-size: cover;
-}
-
-/* Title & Paragraph Styling */
-.contact-container h2 {
-    font-size: 30px;
-    color: #3a3a3a;
-    margin-bottom: 12px;
-}
-
-.contact-container p {
-    font-size: 17px;
-    margin-bottom: 22px;
-    color: #666;
-}
-
-/* Form Styling */
-.contact-form {
     display: flex;
     flex-direction: column;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.contact-form label {
-    font-weight: 500;
-    color: #444;
-    text-align: left;
-}
-
-.contact-form input,
-.contact-form textarea {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #e5f5f7;
+    padding: 80px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .contact-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
     width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #d4d4d4;
-    background: rgba(255, 255, 255, 0.7); /* Semi-transparent fields */
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(5px); /* Subtle blur on inputs */
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #84c07d;
-    outline: none;
-    box-shadow: 0px 0px 10px rgba(132, 192, 125, 0.4);
-}
-
-.contact-form button {
-    background: #84c07d;
-    color: white;
-    font-size: 18px;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.contact-form button:hover {
-    background: #6da96a;
-}
-
-/* Success Message */
-.success-message {
-    background: rgba(212, 237, 218, 0.8);
-    color: #155724;
-    padding: 12px;
+    text-align: center;
+  }
+  
+  .contact-card h2 {
+    color: #1e3a8a;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-card p {
+    color: #4b5563;
     margin-bottom: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    border: 1px solid #c3e6cb;
-    backdrop-filter: blur(5px);
-}
-
-.contact-info{
+  }
+  
+  .success-message {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 8px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .contact-form label {
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  .contact-form input, 
+  .contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+  }
+  
+  .contact-form button {
+    background: #2563eb;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background: #1e40af;
+  }
+  
+  .contact-info {
+    text-align: center;
     margin-top: 20px;
-}
+    color: #4b5563;
+  }

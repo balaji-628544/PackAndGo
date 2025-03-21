@@ -30,7 +30,7 @@ const Munnar = () => {
   const addData = () => {
     const newItem = {
       place: "Munnar",
-      price: "₹7,500",
+      price: "₹7,499",
       image: "String",
     }
     const res = AddwishListData(newItem, setUserData);
@@ -54,7 +54,7 @@ const Munnar = () => {
           <h2>Explore Munnar</h2>
           <p className="trip-price">Trip Price: ₹7,499 per person</p>
           <div className="booking-buttons">
-            <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
+            {/* <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button> */}
             <button className="wishlist" onClick={() => addData()}>
             <i className='bx bx-heart'></i> Wishlist
             </button>
