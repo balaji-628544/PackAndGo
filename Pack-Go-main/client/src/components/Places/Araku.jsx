@@ -15,6 +15,11 @@ import arakuImg5 from "../../assets/PlaceImages/Araku5.avif";
 
 
 const ArakuValley = () => {
+  const newItem = {
+    place: "Araku",
+    price: "₹2,500",
+    image: "String",
+  }
   const images = [arakuImg1, arakuImg2, arakuImg3, arakuImg4, arakuImg5];
   const [currentImage, setCurrentImage] = useState(0);
   const navigate = useNavigate(); // Initialize navigation
@@ -31,11 +36,6 @@ const ArakuValley = () => {
     }
   }, [userData]);
   const addData = () => {
-    const newItem = {
-      place: "Araku",
-      price: "₹2,500",
-      image: "String",
-    }
     const res = AddwishListData(newItem, setUserData);
     console.log("UserData" + userData);
     console.log("res" + res);
@@ -43,6 +43,7 @@ const ArakuValley = () => {
       uploadData(newItem, token, setUserData);
     }
   };
+
   return (
     <div className="place-container">
       <h1 className="place-title">Araku Valley Tourism</h1>
@@ -57,11 +58,13 @@ const ArakuValley = () => {
           <h2>Explore Araku Valley</h2>
           <p className="trip-price">Trip Price: ₹2,500 per person</p>
           <div className="booking-buttons">
-            <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
+            {/* <button className="book-now" onClick={() =>bookNow()}>Book Now</button> */}
             <button className="wishlist" onClick={() => addData()}> <i className='bx bx-heart'></i> Wishlist </button>
           </div>
         </div>
       </div>
+
+      
 
       {/* Place Details Section */}
       <div className="place-details animate-section">

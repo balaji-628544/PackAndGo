@@ -16,30 +16,30 @@ const Ladakh = () => {
   const navigate = useNavigate(); // Initialize navigation
 
   const { userData, setUserData, token } = useContext(AppContext);
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setCurrentImage((prev) => (prev + 1) % images.length);
-      }, 3000); // Change image every 3 seconds
-      return () => clearInterval(interval);
-    }, []);
-    useEffect(() => {
-      if (userData) {
-        console.log(userData);
-      }
-    }, [userData]);
-    const addData = () => {
-      const newItem = {
-        place: "Ladak",
-        price: "₹25,000",
-        image: "String",
-      }
-      const res = AddwishListData(newItem, setUserData);
-      console.log("UserData" + userData);
-      console.log("res" + res);
-      if (res === userData) {
-        uploadData(newItem, token, setUserData);
-      }
-    };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 3000); // Change image every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
+  const addData = () => {
+    const newItem = {
+      place: "Ladak",
+      price: "₹25,000",
+      image: "String",
+    }
+    const res = AddwishListData(newItem, setUserData);
+    console.log("UserData" + userData);
+    console.log("res" + res);
+    if (res === userData) {
+      uploadData(newItem, token, setUserData);
+    }
+  };
 
   return (
     <div className="place-container">
@@ -55,9 +55,9 @@ const Ladakh = () => {
           <h2>Explore Ladakh</h2>
           <p className="trip-price">Trip Price: ₹25,000 per person</p>
           <div className="booking-buttons">
-          <button className="book-now" onClick={() => navigate("/payment")}>
+            {/* <button className="book-now" onClick={() => navigate("/payment")}>
               Book Now
-            </button>
+            </button> */}
 
             {/* Navigate to Wishlist Page */}
             <button className="wishlist" onClick={() => addData()}>
@@ -72,23 +72,23 @@ const Ladakh = () => {
         <h2>Ladak Tourism</h2>
         <p>✅ <strong>High-Altitude Desert</strong> – Known as the world’s coldest desert, Ladakh is famous for its dramatic landscapes.</p>
 
-<p>✅ <strong>Land of High Passes</strong> – Home to some of the world's highest motorable roads, including <strong>Khardung La & Chang La</strong>.</p>
+        <p>✅ <strong>Land of High Passes</strong> – Home to some of the world's highest motorable roads, including <strong>Khardung La & Chang La</strong>.</p>
 
-<p>✅ <strong>Scenic Wonders</strong> – Stunning locations like <strong>Pangong Lake, Nubra Valley, and Tso Moriri</strong>.</p>
+        <p>✅ <strong>Scenic Wonders</strong> – Stunning locations like <strong>Pangong Lake, Nubra Valley, and Tso Moriri</strong>.</p>
 
-<p>✅ <strong>Rich Tibetan Buddhist Culture</strong> – Monasteries like <strong>Hemis, Thiksey, and Alchi</strong> showcase Ladakh's spiritual heritage.</p>
+        <p>✅ <strong>Rich Tibetan Buddhist Culture</strong> – Monasteries like <strong>Hemis, Thiksey, and Alchi</strong> showcase Ladakh's spiritual heritage.</p>
 
-<p>✅ <strong>Adventure Paradise</strong> – Offers trekking, river rafting, mountain biking, and the famous <strong>Chadar Trek</strong>.</p>
+        <p>✅ <strong>Adventure Paradise</strong> – Offers trekking, river rafting, mountain biking, and the famous <strong>Chadar Trek</strong>.</p>
 
-<p>✅ <strong>Leh – The Heart of Ladakh</strong> – A vibrant town with <strong>Shanti Stupa, Leh Bazaar, and Leh Palace</strong>.</p>
+        <p>✅ <strong>Leh – The Heart of Ladakh</strong> – A vibrant town with <strong>Shanti Stupa, Leh Bazaar, and Leh Palace</strong>.</p>
 
-<p>✅ <strong>Breathtaking Road Trips</strong> – The <strong>Manali-Leh & Srinagar-Leh highways</strong> are among the most scenic drives in the world.</p>
+        <p>✅ <strong>Breathtaking Road Trips</strong> – The <strong>Manali-Leh & Srinagar-Leh highways</strong> are among the most scenic drives in the world.</p>
 
-<p>✅ <strong>Delicious Local Cuisine</strong> – Must-try dishes include <strong>momos, thukpa, and butter tea</strong>.</p>
+        <p>✅ <strong>Delicious Local Cuisine</strong> – Must-try dishes include <strong>momos, thukpa, and butter tea</strong>.</p>
 
-<p>✅ <strong>Best Time to Visit</strong> – April to mid-July when the roads are accessible and the weather is pleasant.</p>
+        <p>✅ <strong>Best Time to Visit</strong> – April to mid-July when the roads are accessible and the weather is pleasant.</p>
 
-<p>✅ <strong>Unmatched Stargazing</strong> – Ladakh offers some of the clearest night skies, perfect for astronomy lovers.</p>
+        <p>✅ <strong>Unmatched Stargazing</strong> – Ladakh offers some of the clearest night skies, perfect for astronomy lovers.</p>
       </div>
 
       {/* Trip Highlights & Itinerary */}

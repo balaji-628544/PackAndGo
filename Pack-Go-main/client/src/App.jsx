@@ -1,34 +1,33 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from './pages/Home';
-import TopDestinations from './pages/TopDestinations';
-import Categories from './pages/Categories';
-import Contact from './pages/Contact';
-import Wishlist from './pages/Wishlist';
-import Profile from './pages/Profile';
-import Navbar from './pages/Navbar';
-import Login from './components/Auth/Login';
-import PaymentPage from "./components/PaymentPage"; // Create this page
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import all package detail pages dynamically
-import GoldenTriangleIndia from './pages/PackageDetails/GoldenTriangleIndia';
-import GoldenTriangleAmritsar from './pages/PackageDetails/GoldenTriangleAmritsar';
-import SrinagarLeh from './pages/PackageDetails/SrinagarLeh';
-import ChardhamYatra from './pages/PackageDetails/ChardhaYatra';
-import DarjeelingGangtok from './pages/PackageDetails/DarjeelingGangtok';
-import GarhwalKumaon from './pages/PackageDetails/Garhwalkumaon';
-import GoldenTriangleGoa from './pages/PackageDetails/GoldenTriangleGoa';
-import Himachal from './pages/PackageDetails/Himachal';
-import Karnataka from './pages/PackageDetails/Karnataka';
-import Kerala from './pages/PackageDetails/KeralaTrip';
-import LadakhTrip from './pages/PackageDetails/LadakTrip';
-import Orissa from './pages/PackageDetails/Orrisa';
-import GoldenTriangleVaranasi from './pages/PackageDetails/GoldenTriangleVaranasi';
-import Rajasthan from './pages/PackageDetails/Rajasthan';
-import GoldenTriangleShimla from './pages/PackageDetails/GoldenTriangleShimla';
-import AssamSundarbans from './pages/PackageDetails/AssamSundarbans';
+import GoldenTriangleIndia from './components/Packages/GoldenTriangleIndia';
+import GoldenTriangleAmritsar from './components/Packages/GoldenTriangleAmritsar';
+import SrinagarLeh from './components/Packages/SrinagarLeh';
+import ChardhamYatra from './components/Packages/ChardhaYatra';
+import DarjeelingGangtok from './components/Packages/DarjeelingGangtok';
+import GarhwalKumaon from './components/Packages/Garhwalkumaon';
+import GoldenTriangleGoa from './components/Packages/GoldenTriangleGoa';
+import Himachal from './components/Packages/Himachal';
+import Karnataka from './components/Packages/Karnataka';
+import Kerala from './components/Packages/KeralaTrip';
+import LadakhTrip from './components/Packages/LadakTrip';
+import Orissa from './components/Packages/Orrisa';
+import GoldenTriangleVaranasi from './components/Packages/GoldenTriangleVaranasi';
+import Rajasthan from './components/Packages/Rajasthan';
+import GoldenTriangleShimla from './components/Packages/GoldenTriangleShimla';
+import AssamSundarbans from './components/Packages/AssamSundarbans';
+
+//Importing Pages
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import Wishlist from './pages/Wishlist';
+import Profile from './pages/Profile';
+import Navbar from './pages/Navbar';
+
 
 //importing Hillstations
 import HillStations from './components/HillStations';
@@ -62,8 +61,15 @@ import Dwaraka from "./components/Places/Dwaraka";
 import GoldenTemple from "./components/Places/GoldenTemple";
 import Badrinath from "./components/Places/Badrinath";
 
+
 import RannofKutch from './components/Places/RannofKutch';
 import Srinagar from './components/Places/Srinagar';
+
+// Importing Authentication pages
+import Login from './components/Auth/Login';
+import PaymentPage from "./components/PaymentPage";
+import Confirmation from './components/Confirmation';
+import PreviousOrders from './pages/PreviousOrders';
 
 
 
@@ -73,20 +79,20 @@ const App = () => {
       <Navbar />
       <ToastContainer />
       <Routes>
-        {/* ✅ Both '/' and '/home' should go to the Home page */}
+        {/* Both '/' and '/home' should go to the Home page */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate replace to="/" />} />
 
         {/* Other static routes */}
-        <Route path="/topdestinations" element={<TopDestinations />} />
-        <Route path="/categories" element={<Categories />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/loginpage" element={<Login />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/confirmation" element={<Confirmation /> } />
+        <Route path="/previous-orders" element={<PreviousOrders /> } />
 
-        {/* ✅ Dynamic Routing for Package Detail Pages */}
+        {/* Dynamic Routing for Package Detail Pages */}
         <Route path="/packagedetails/golden-triangle-india" element={<GoldenTriangleIndia />} />
         <Route path="/packagedetails/golden-triangle-amritsar" element={<GoldenTriangleAmritsar />} />
         <Route path="/packagedetails/srinagar-leh" element={<SrinagarLeh />} />
@@ -105,11 +111,9 @@ const App = () => {
         <Route path="/packagedetails/assam-sundarbans" element={<AssamSundarbans />} />
 
 
-
         {/* Hillstations */}
         <Route path="/categories/hillstations" element={<HillStations />} />
 
-        {/* Places */}
         <Route path="/araku" element={<Araku />} />
         <Route path="/darjeeling" element={<Darjeeling />} />
         <Route path="/ladak" element={<Ladak />} />
@@ -130,7 +134,6 @@ const App = () => {
 
         {/* Spritual Destinations */}
         <Route path="/categories/spritualdestinations" element={<SpiritualDestinations />} />
-
 
         <Route path="/tirupati" element={<Tirupati />} />
         <Route path="/puri" element={<Puri />} />

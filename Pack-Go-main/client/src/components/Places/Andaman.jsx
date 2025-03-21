@@ -60,7 +60,7 @@ const AndamanNicobar = () => {
           <h2>Explore Andaman & Nicobar</h2>
           <p className="trip-price">Trip Price: ₹10,000 per person</p>
           <div className="booking-buttons">
-            <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
+            {/* <button className="book-now" onClick={() => navigate("/payment?destination=Andaman")}>Book Now</button> */}
             <button className="wishlist" onClick={() => addData()}
             >
               <i className='bx bx-heart'></i> Wishlist

@@ -23,6 +23,8 @@ const Navbar = () => {
           <img src={Image} style={{ width: "130px", height: "60px", borderRadius:"1rem" }} alt="Example" draggable="false" />
         </Link>
 
+
+
         {/* Navbar Links */}
         <ul className="navbar-list">
           <li className="navbar-item">

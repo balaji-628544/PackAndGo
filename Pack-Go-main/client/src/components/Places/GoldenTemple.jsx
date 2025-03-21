@@ -54,7 +54,7 @@ const GoldenTemple = () => {
           <h2>Explore Golden Temple</h2>
           <p className="trip-price">Trip Price: ₹5,500 per person</p>
           <div className="booking-buttons">
-            <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button>
+            {/* <button className="book-now" onClick={() => navigate("/payment")}>Book Now</button> */}
             <button className="wishlist" onClick={() => addData()}>
               <i className='bx bx-heart'></i> Wishlist
             </button>

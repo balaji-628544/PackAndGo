@@ -3,6 +3,7 @@ const User = require("../models/UserModel");
 const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const {protect} = require("../middleware/authenticateUser");
+const BookingsModel = require("../models/BookingModel");
 
 userRouter.post("/register",async (req,res)=>{
     try {
@@ -64,5 +65,25 @@ const generateToken = (id)=>{
     });
 
 };
+
+
+// Get previous bookings for a specific user
+userRouter.get("/previous-orders/:userId", protect, async (req, res) => {
+    try {
+        const userId = req.params.userId;
+
+        // Find bookings by userId and sort by latest bookings
+        const bookings = await BookingsModel.find({ userId }).sort({ createdAt: -1 });
+
+        if (!bookings.length) {
+            return res.status(404).json({ message: "No previous bookings found." });
+        }
+
+        res.status(200).json(bookings);
+    } catch (error) {
+        console.error("Error retrieving previous bookings:", error);
+        res.status(500).json({ message: "Server error while fetching bookings." });
+    }
+});
 
 module.exports = userRouter;
